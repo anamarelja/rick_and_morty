@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useEffect, useState } from "react";
+import Pagination from "./components/Pagination";
+import Main from "./pages/Main";
+import SinglePage from "./pages/SinglePage";
 
-function App() {
+const App = (props) => {
+  const [results, setResults] = useState([]);
+  const [currentPage, setPage] = useState(1);
+  const [charID, setCharacter] = useState(null);
+
+  useEffect(() => {
+    fetch(`https://rickandmortyapi.com/api/character/?page=${currentPage}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setResults(data.results);
+      });
+  }, [currentPage]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Pagination changePage={setPage} currentPage={currentPage} charID={charID} setCharacter={setCharacter}/>
+
+      {charID === null ? (
+        <Main
+          results={results}
+          setCharacter={setCharacter}
+          currentPage={currentPage}
+          setPage={setPage}
+        />
+      ) : (
+        <SinglePage
+          results={results.find((e) => e.id === charID)}
+          setCharacter={setCharacter}
+        />
+      )}
     </div>
   );
-}
+};
 
 export default App;

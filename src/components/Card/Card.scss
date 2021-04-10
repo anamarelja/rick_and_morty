@@ -1,0 +1,50 @@
+.User {
+    margin-right: 30px;
+    width: 250px;
+    text-align: center;
+    background-color: #e8cdbf;
+    margin-bottom: 50px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+
+    img{
+        width: 250px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+    p{
+        text-align: center;
+        color:#69241f;
+        font-size: 18px;
+        font-weight: bold;
+        font-stretch: wider;
+        margin-bottom: 15px;
+        margin-top: 15px
+    }
+
+    .myButton {
+        background:linear-gradient(to bottom, #e4685d 5%, #eb675e 100%);
+        background-color:#e4685d;
+        border-radius:5px;
+        border:1px solid #e4685d;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font-family:Arial;
+        font-size:15px;
+        font-weight:bold;
+        padding:2px 74px;
+        text-decoration:none;
+        margin-bottom: 10px;
+    }
+    .myButton:hover {
+        background:linear-gradient(to bottom, #ffffff 5%, #ffffff 100%);
+        background-color: #ffffff;
+        color:#e4685d;
+    }
+    .myButton:active {
+        position:relative;
+        top:1px;
+    }
+}
